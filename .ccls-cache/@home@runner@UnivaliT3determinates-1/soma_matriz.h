@@ -2,67 +2,60 @@
 #include <stdlib.h>
 
 void soma_matriz(){
-  int lin1, col1, lin2, col2;
+  int lin, col;
 
-  printf("Digite a quantidade de linhas e colunas respectivamente à primeira matriz:\n");
-  scanf("%d %d", &lin1, &col1);
-  printf("Digite a quantidade de linhas e colunas respectivamente à segunda matriz:\n");
-  scanf("%d %d", &lin2, &col2);
-
-  double mat1[lin1][col1], mat2[lin2][col2], soma_mat[lin1][col2];
+  printf("\nSoma de Matrizes:\n");
+  printf("\nDigite a quantidade de linhas e colunas respectivamente das matrizes:\n");
+  scanf("%d %d", &lin, &col);
   
-  if(col1 == lin2){
-    for(int i = 0; i < lin1; i++){
-      for(int j = 0; j < col1; j++){
+  double mat1[lin][col], mat2[lin][col], soma_mat[lin][col];
+  
+    for(int i = 0; i < lin; i++){
+      for(int j = 0; j < col; j++){
         printf("\nMatriz 1: Por favor digite o valor para posição %dX%d: ", i+1 , j+1);
         scanf("%lf", &mat1[i][j]);
       }
     }
-    for(int i = 0; i < lin2; i++){
-      for(int j = 0; j < col2; j++){
+    for(int i = 0; i < lin; i++){
+      for(int j = 0; j < col; j++){
         printf("\nMatriz 2: Por favor digite o valor para posição %dX%d: ", i+1 , j+1);
         scanf("%lf", &mat2[i][j]);
       }
     }
-  }else{
-    while(col1 != lin2){
-      printf("Não é possível realizar soma de matrizes dos respectivos tamanhos %dX%d e %dX%d\n\n", lin1, col1, lin2, col2);
-      printf("A quantidade de colunas da primeira matriz precisa ter  mesmo total de linhas da segunda matriz.\n\n");
-      printf("Digite a quantidade de linhas e colunas respectivamente à primeira matriz:\n");
-      scanf("%d %d", &lin1, &col1);
-      printf("Digite a quantidade de linhas e colunas respectivamente à segunda matriz:\n");
-      scanf("%d %d", &lin2, &col2);
-    }
-  }
 
-  for(int i = 0; i < lin1; i++){
-    for(int j = 0; j < col2; j ++){
+  for (int i = 0; i < lin; i++) {
+      for (int j = 0; j < col; j++) {
+        soma_mat[i][j] = 0;
+      }
+  }
+  for(int i = 0; i < lin; i++){
+    for(int j = 0; j < col; j ++){
       soma_mat[i][j] = mat1[i][j] + mat2[i][j];
     }
   }
 
   printf("\nMatriz Original 1:\n");
-  for(int i = 0; i < lin1; i++){
+  for(int i = 0; i < lin; i++){
     printf("[ ");
-    for(int j = 0; j < col1; j++){
+    for(int j = 0; j < col; j++){
       printf("%.2lf ",mat1[i][j]);
     }
     printf("]\n");
   }
 
   printf("\nMatriz Original 2:\n");
-  for(int i = 0; i < lin2; i++){
+  for(int i = 0; i < lin; i++){
     printf("[ ");
-    for(int j = 0; j < col2; j++){
+    for(int j = 0; j < col; j++){
       printf("%.2lf ",mat2[i][j]);
     }
     printf("]\n");
   }
 
   printf("\nMatriz Somada:\n");
-  for(int i = 0; i < lin1; i++){
+  for(int i = 0; i < lin; i++){
     printf("[ ");
-    for(int j = 0; j < col2; j++){
+    for(int j = 0; j < col; j++){
       printf("%.2lf ", soma_mat[i][j]);
     }
     printf("]\n");

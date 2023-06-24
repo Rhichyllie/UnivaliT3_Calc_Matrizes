@@ -3,6 +3,6 @@
 #include "menu.h"
 
 int main(void) {
-  sub_matriz();
+ menu();
   return 0;
 }

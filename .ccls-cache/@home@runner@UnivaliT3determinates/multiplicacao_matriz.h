@@ -4,9 +4,10 @@
 void multi_matriz(){
   int lin1, col1, lin2, col2;
 
-  printf("Digite a quantidade de linhas e colunas respectivamente à primeira matriz:\n");
+  printf("\nMultiplicação de Matrizes:\n");
+  printf("\nDigite a quantidade de linhas e colunas respectivamente à primeira matriz:\n\n");
   scanf("%d %d", &lin1, &col1);
-  printf("Digite a quantidade de linhas e colunas respectivamente à segunda matriz:\n");
+  printf("\nDigite a quantidade de linhas e colunas respectivamente à segunda matriz:\n");
   scanf("%d %d", &lin2, &col2);
 
   double mat1[lin1][col1], mat2[lin2][col2], multi_mat[lin1][col2];
@@ -27,18 +28,21 @@ void multi_matriz(){
   }else{
     while(col1 != lin2){
       printf("Não é possível realizar soma de matrizes dos respectivos tamanhos %dX%d e %dX%d\n\n", lin1, col1, lin2, col2);
-      printf("A quantidade de colunas da primeira matriz precisa ter  mesmo total de linhas da segunda matriz.\n\n");
+      printf("A quantidade de colunas da primeira matriz precisa ter o mesmo total de linhas da segunda matriz.\n\n");
       printf("Digite a quantidade de linhas e colunas respectivamente à primeira matriz:\n");
       scanf("%d %d", &lin1, &col1);
       printf("Digite a quantidade de linhas e colunas respectivamente à segunda matriz:\n");
       scanf("%d %d", &lin2, &col2);
     }
   }
-
-  for(int i = 0; i < lin1; i++){
-    for(int j = 0; j < col2; j ++){
-      multi_mat[i][j] = mat1[i][j] + mat2[i][j];
-    }
+  
+  for (int i = 0; i < lin1; i++) {
+      for (int j = 0; j < col2; j++) {
+        multi_mat[i][j] = 0;
+        for (int k = 0; k < col1; k++) {
+          multi_mat[i][j] += mat1[i][k] * mat2[k][j];
+        }
+      }
   }
 
   printf("\nMatriz Original 1:\n");
